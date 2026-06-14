@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadence</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #0a001a 0%, #1a0033 50%, #2d0052 100%);
+            color: #e8e8e8;
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Premium gradient background */
+        .bg-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .gradient-orb-1 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            left: -100px;
+            animation: drift 20s ease-in-out infinite;
+        }
+
+        .gradient-orb-2 {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(236, 72, 153, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -150px;
+            right: -100px;
+            animation: drift 25s ease-in-out infinite reverse;
+        }
+
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(50px, 50px); }
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 80px 20px 60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .title {
+            font-size: 5rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            background: linear-gradient(135deg, #a855f7 0%, #d946ef 50%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: #9fa5af;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* Description section */
+        .description {
+            text-align: center;
+            margin: 60px 0 80px 0;
+            padding: 0 20px;
+        }
+
+        .description-text {
+            font-size: 1.15rem;
+            color: #c5c5c5;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Download section */
+        .download-section {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(236, 72, 153, 0.05) 100%);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            border-radius: 20px;
+            padding: 80px 40px;
+            text-align: center;
+            margin: 60px 0;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(168, 85, 247, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(168, 85, 247, 0.03), transparent);
+            pointer-events: none;
+        }
+
+        .download-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 25px 80px;
+            background: linear-gradient(135deg, #a855f7 0%, #d946ef 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 50px rgba(168, 85, 247, 0.35);
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 2;
+            text-transform: uppercase;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 70px rgba(168, 85, 247, 0.5);
+            background: linear-gradient(135deg, #d946ef 0%, #a855f7 100%);
+        }
+
+        .download-btn:active {
+            transform: translateY(-3px);
+        }
+
+        .version-info {
+            margin-top: 30px;
+            font-size: 0.95rem;
+            color: #8fa5af;
+            position: relative;
+            z-index: 2;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid rgba(168, 85, 247, 0.15);
+            margin-top: 100px;
+            color: #707070;
+            position: relative;
+            z-index: 5;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 3rem;
+                letter-spacing: 2px;
+            }
+
+            .download-section {
+                padding: 60px 30px;
+                margin: 40px 0;
+            }
+
+            .download-title {
+                font-size: 1.5rem;
+            }
+
+            .download-btn {
+                padding: 18px 50px;
+                font-size: 0.95rem;
+            }
+
+            header {
+                padding: 60px 20px 40px;
+            }
+
+            .description-text {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-elements">
+        <div class="gradient-orb-1"></div>
+        <div class="gradient-orb-2"></div>
+    </div>
+
+    <header>
+        <h1 class="title">CADENCE</h1>
+        <p class="tagline">Rhythm Game</p>
+    </header>
+
+    <div class="container">
+        <section class="description">
+            <p class="description-text">
+                Cadence is a rhythm-based game that combines engaging gameplay with custom chart creation.
+                Available in beta, ready for download.
+            </p>
+        </section>
+
+        <section class="download-section">
+            <h2 class="download-title">Get Cadence Beta</h2>
+            <a href="https://drive.usercontent.google.com/download?id=1bJMaWCFnKNC0--snHQNvPV0mIlfH2ko1&export=download&authuser=0&confirm=t&uuid=b293505d-7816-4a8b-88b7-6c3e3eadd0b7&at=AAINaIK2sGPXevCbtT7z0MHzGb7w%3A1781397488684" class="download-btn">
+                Download
+            </a>
+            <p class="version-info">Beta Version</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Cadence. All rights reserved.</p>
+    </footer>
+</body>
+</html>
